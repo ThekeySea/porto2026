@@ -11,11 +11,8 @@
 
         <!-- Skills Category Tabs -->
         <div class="skills-tab-nav">
-            <button class="tab-btn active" data-tab="frontend">
-                <i data-lucide="layout-template" style="width: 16px; margin-right: 6px;"></i> Frontend Dev
-            </button>
-            <button class="tab-btn" data-tab="backend">
-                <i data-lucide="database" style="width: 16px; margin-right: 6px;"></i> Backend & API
+            <button class="tab-btn active" data-tab="fullstack">
+                <i data-lucide="layers" style="width: 16px; margin-right: 6px;"></i> Programming
             </button>
             <button class="tab-btn" data-tab="tools">
                 <i data-lucide="wrench" style="width: 16px; margin-right: 6px;"></i> Tools & Design
@@ -25,29 +22,9 @@
             </button>
         </div>
 
-        <!-- Frontend Skills Grid -->
-        <div class="skills-grid active" id="skills-frontend">
-            @foreach($skills['frontend'] as $skill)
-                <div class="glass-card skill-card">
-                    <div class="skill-info">
-                        <div class="skill-name-wrapper">
-                            <div class="skill-icon-box">
-                                <i data-lucide="{{ $skill['icon'] }}"></i>
-                            </div>
-                            <span class="skill-name">{{ $skill['name'] }}</span>
-                        </div>
-                        <span class="skill-percentage">{{ $skill['level'] }}%</span>
-                    </div>
-                    <div class="skill-bar-bg">
-                        <div class="skill-bar-fill" data-level="{{ $skill['level'] }}"></div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <!-- Backend Skills Grid -->
-        <div class="skills-grid" id="skills-backend" style="display: none;">
-            @foreach($skills['backend'] as $skill)
+        <!-- Frontend & Backend Skills Grid -->
+        <div class="skills-grid active" id="skills-fullstack">
+            @foreach($skills['fullstack'] as $skill)
                 <div class="glass-card skill-card">
                     <div class="skill-info">
                         <div class="skill-name-wrapper">

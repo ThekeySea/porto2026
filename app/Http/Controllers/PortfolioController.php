@@ -28,115 +28,96 @@ class PortfolioController extends Controller
         ];
 
         $skills = [
-            'frontend' => [
-                ['name' => 'HTML5 & CSS3 / Modern Glassmorphism', 'level' => 95, 'icon' => 'code-2'],
-                ['name' => 'JavaScript (ES6+) & Modern DOM', 'level' => 90, 'icon' => 'file-code-2'],
-                ['name' => 'Vue.js / React.js Framework', 'level' => 85, 'icon' => 'atom'],
-                ['name' => 'Tailwind CSS & Responsive Layouts', 'level' => 92, 'icon' => 'palette'],
-            ],
-            'backend' => [
-                ['name' => 'PHP 8 & Laravel Framework', 'level' => 95, 'icon' => 'server'],
-                ['name' => 'RESTful API Development & JSON', 'level' => 90, 'icon' => 'network'],
-                ['name' => 'MySQL / PostgreSQL Database', 'level' => 88, 'icon' => 'database'],
-                ['name' => 'Authentication, Security & Sanctum', 'level' => 85, 'icon' => 'shield-check'],
+            'fullstack' => [
+                ['name' => 'HTML5 & CSS3', 'level' => 85, 'icon' => 'code-2'],
+                ['name' => 'MySQL / PostgreSQL Database', 'level' => 83, 'icon' => 'database'],
+                ['name' => 'Tailwind CSS & Responsive Layouts', 'level' => 82, 'icon' => 'palette'],
+                ['name' => 'PHP 8 & Laravel Framework', 'level' => 77, 'icon' => 'server'],
             ],
             'tools' => [
-                ['name' => 'Git, GitHub & Version Control', 'level' => 92, 'icon' => 'git-branch'],
-                ['name' => 'Docker & Local Dev Environments', 'level' => 80, 'icon' => 'box'],
-                ['name' => 'Figma (UI/UX Design & Prototyping)', 'level' => 88, 'icon' => 'figma'],
-                ['name' => 'Vite, Webpack & Npm Package Manager', 'level' => 86, 'icon' => 'terminal'],
+                ['name' => 'Figma (UI/UX Design & Prototyping)', 'level' => 95, 'icon' => 'brush'],
+                ['name' => 'Capcut', 'level' => 93, 'icon' => 'clapperboard'],
+                ['name' => 'Adobe Photoshop', 'level' => 89, 'icon' => 'pen'],
+                ['name' => 'Adobe Illustrator', 'level' => 84, 'icon' => 'pen-tool'],
+                ['name' => 'Git, GitHub & Version Control', 'level' => 82, 'icon' => 'git-branch'],
+                ['name' => '9Routes', 'level' => 78, 'icon' => 'network'],
+
             ],
             'soft' => [
-                ['name' => 'Problem Solving & Algoritma', 'level' => 95, 'icon' => 'lightbulb'],
-                ['name' => 'Komunikasi & Kolaborasi Tim', 'level' => 90, 'icon' => 'users'],
-                ['name' => 'Manajemen Waktu & Target Sprint', 'level' => 88, 'icon' => 'clock'],
+                ['name' => 'Problem Solving', 'level' => 95, 'icon' => 'lightbulb'],
+                ['name' => 'Komunikasi & Kolaborasi Tim', 'level' => 92, 'icon' => 'users'],
+                ['name' => 'Manajemen Waktu & Target Sprint', 'level' => 90, 'icon' => 'clock'],
             ]
         ];
 
         $education = [
             [
                 'period' => '2024 - Sekarang',
-                'degree' => 'SMKN 1 Surabaya - Rekayasa Perangkat Lunak (RPL)',
-                'institution' => 'Universitas Teknologi Indonesia',
+                'degree' => 'Program Keahlian Rekayasa Perangkat Lunak',
+                'institution' => 'SMKN 1 Surabaya',
                 'description' => 'Mempelajari pengembangan perangkat lunak, algoritma, dan desain sistem berbasis web serta mobile. Fokus pada praktik coding modern dan kolaborasi tim.',
-                'highlights' => ['Ketua Devisi Devgraf Ekstrakurikuler ITClub', 'Peserta Cyberfest 2026']
+                'highlights' => ['Alhamdulilllah, saya diterima di SMKN 1 Surabaya untuk program keahlian Rekayasa Perangkat Lunak.'],
             ],
 
         ];
 
         $experience = [
             [
-                'period' => '2023 - Sekarang',
-                'role' => 'Senior Full-Stack Developer',
-                'company' => 'Aether Digital Tech Solution',
-                'description' => 'Memimpin tim pengembang dalam merancang aplikasi enterprise berbasis Laravel & Vue.js dengan arsitektur microservices dan performa tinggi.',
-                'tags' => ['Laravel 10/11', 'Vue.js', 'MySQL', 'REST API', 'Redis'],
+                'period' => 'Januari 2026',
+                'role' => 'Peserta Cyberfest 2026',
+                'company' => 'Universitas Hayam Wuruk Perbanas',
+                'description' => 'Memimpin tim perancangan desain tampilan sebuah website',
+                'tags' => ['Figma', 'UI/UX Design', 'Prototyping'],
                 'highlights' => [
-                    'Meningkatkan kecepatan load halaman sebesar 45% melalui optimalisasi query & caching',
-                    'Mengintegrasikan payment gateway otomatis (Midtrans/Xendit) untuk platform e-commerce',
-                    'Merancang sistem manajemen pengguna dengan role-based permission terstruktur'
+                    'Membuat desain UI/UX untuk website kompetisi Cyberfest 2026',
+                    'Menyusun prototipe interaktif untuk presentasi tim'
                 ]
             ],
             [
-                'period' => '2022 - 2023',
-                'role' => 'Laravel Web Developer',
-                'company' => 'Nexa Cloud Studio',
-                'description' => 'Bertanggung jawab mengembangkan modul backend dan UI interaktif untuk sistem informasi klien skala menengah hingga besar.',
-                'tags' => ['PHP', 'Laravel', 'Blade', 'Bootstrap', 'JavaScript'],
+                'period' => 'Juli 2026 - Sekarang',
+                'role' => 'Ketua Devisi Devgraf',
+                'company' => 'Ekstrakurikuler ITClub SMKN 1 Surabaya',
+                'description' => 'Merancang pembelajaran devgraf, serta menjadi mentor',
+                'tags' => ['Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'UI/UX Design'],
                 'highlights' => [
-                    'Mengembangkan 12+ projek website custom untuk klien korporat',
-                    'Membuat pustaka komponen Blade reusable untuk mempercepat alur kerja dev'
+                    'Membuat kurikulum pembelajaran Devgraf untuk anggota baru',
+                    'Membimbing anggota dalam proyek desain grafis dan UI/UX'
                 ]
             ],
-            [
-                'period' => '2021 - 2022',
-                'role' => 'Frontend & UI Specialist (Freelance)',
-                'company' => 'Self-Employed / Remote',
-                'description' => 'Mengerjakan berbagai proyek pembuatan landing page modern, dashboard admin glassmorphism, dan slicer desain Figma ke kode interaktif.',
-                'tags' => ['HTML5/CSS3', 'Glassmorphism', 'JavaScript', 'Figma'],
-                'highlights' => [
-                    'Mencapai 100% tingkat kepuasan klien di platform freelance global',
-                    'Menyelesaikan 20+ proyek interaktif tepat waktu'
-                ]
-            ]
         ];
 
         $projects = [
             [
-                'title' => 'Liquid Enterprise Analytics Dashboard',
-                'category' => 'Web App',
-                'description' => 'Dashboard analitik real-time dengan tampilan liquid glassmorphism modern, visualisasi grafik interaktif, dan manajemen data komprehensif.',
-                'tags' => ['Laravel', 'Vue.js', 'Chart.js', 'CSS Glass'],
-                'image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
-                'demo_url' => '#',
-                'github_url' => '#'
+                'title' => 'Website UMKM "Taki"',
+                'category' => 'UI/UX',
+                'description' => 'Desain UI/UX modern untuk website UMKM Taki, menampilkan produk, testimoni, dan integrasi pembayaran digital untuk pengalaman belanja online yang mulus.',
+                'tags' => ['Figma'],
+                'image' => 'images\A4 - 12.png',
+                'demo_url' => 'https://www.figma.com/design/KPJaMsHwVAQ66LTKZWJxra/Desain-Website-Taki?node-id=11-2&t=nkc82ZqXSxyI4xjJ-1',
             ],
             [
-                'title' => 'Aether SaaS E-Commerce Platform',
-                'category' => 'Full-Stack',
-                'description' => 'Platform toko online serba cepat dengan keranjang belanja interaktif, integrasi pembayaran digital, dan panel manajemen stok.',
-                'tags' => ['Laravel', 'MySQL', 'Tailwind', 'Midtrans API'],
-                'image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
-                'demo_url' => '#',
-                'github_url' => '#'
+                'title' => 'Mobile App - Arahin AI',
+                'category' => 'Ui/UX',
+                'description' => 'Desain UI/UX untuk aplikasi mobile Arahin AI, menampilkan antarmuka interaktif, navigasi intuitif, dan integrasi AI untuk pengalaman pengguna yang cerdas.',
+                'tags' => ['Figma'],
+                'image' => 'images\SplashScreen-5.png',
+                'demo_url' => 'https://www.figma.com/design/fDeyQZu5CDlMOc3c9fAezW/PendekarSuki-s-Project?node-id=56-259&t=cWTOwhOfNVSqFBE7-1',
             ],
             [
-                'title' => 'Portal Layanan Publik Digital',
-                'category' => 'Enterprise',
-                'description' => 'Sistem pengajuan surat dan dokumen resmi secara mandiri untuk masyarakat dengan fitur verifikasi QR Code & status pengawasan real-time.',
-                'tags' => ['Laravel', 'Bootstrap 5', 'PDF Generator', 'MySQL'],
-                'image' => 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop',
-                'demo_url' => '#',
-                'github_url' => '#'
+                'title' => 'Website Nasi Cokot MasFahmi',
+                'category' => 'UI/UX',
+                'description' => 'Rancangan antarmuka modern untuk website Nasi Cokot MasFahmi, menampilkan menu, lokasi, dan integrasi pemesanan online untuk pengalaman kuliner yang praktis.',
+                'tags' => ['Figma'],
+                'image' => 'images\Landing Page.png',
+                'demo_url' => 'https://www.figma.com/design/JmdHfdxs4qtUqHzbREsWJ9/SegoCokotMasFahmi?node-id=155-43&t=bkyDWAbKOoOweh6p-1',
             ],
             [
-                'title' => 'Liquid Glass UI Design System',
+                'title' => 'Website Pilihanmu',
                 'category' => 'UI/UX Design',
-                'description' => 'Sistem desain komponen UI modern berbasis kaca transparan cair dengan aksen neon cyan untuk aplikasi web generasi mendatang.',
-                'tags' => ['Figma', 'CSS3 Spec', 'Design System'],
-                'image' => 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
-                'demo_url' => '#',
-                'github_url' => '#'
+                'description' => 'Rancangan UI/UX untuk website Pilihanmu, yakni website mirip Quizizz, menampilkan pertanyaan dengan topik tertentu, untuk dimainkan bersama teman-teman',
+                'tags' => ['Figma'],
+                'image' => 'images\MacBook Pro 16_ - 4.png',
+                'demo_url' => 'https://www.figma.com/design/zkxCsObwNEGAQIEfx5ggwA/UI-UX-Website-Pilihanmu?node-id=0-1&t=eO4Kw0NArUgEiuXF-1',
             ]
         ];
 

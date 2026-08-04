@@ -43,7 +43,7 @@
             <div class="hero-avatar-wrapper">
                 <div class="avatar-glass-card">
                     <!-- High quality minimalist developer vector/photo placeholder -->
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="{{ $profile['name'] }}" class="avatar-image">
+                    <img src="{{ asset('images/fotopas3bagi4.png') }}" alt="{{ $profile['name'] }}" class="avatar-image">
                 </div>
 
                 <!-- Floating Liquid Badges -->

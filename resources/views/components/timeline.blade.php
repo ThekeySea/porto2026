@@ -13,7 +13,7 @@
         <div class="timeline-toggle-wrapper">
             <div class="timeline-toggle-box">
                 <button class="toggle-option active" data-target="experience">
-                    <i data-lucide="building-2" style="width: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;"></i> Pengalaman Kerja
+                    <i data-lucide="building-2" style="width: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;"></i> Pengalaman
                 </button>
                 <button class="toggle-option" data-target="education">
                     <i data-lucide="graduation-cap" style="width: 16px; margin-right: 6px; display: inline-block; vertical-align: middle;"></i> Pendidikan

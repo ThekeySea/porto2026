@@ -1,20 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Custom Liquid Cursor Follower
-  const cursor = document.getElementById('liquidCursor');
-  if (cursor && window.innerWidth > 768) {
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+  // 1. Project Detail Modal
+  const modalOverlay = document.getElementById('projectModalOverlay');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalImage = document.getElementById('modalImage');
+  const modalCategory = document.getElementById('modalCategory');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDescription = document.getElementById('modalDescription');
+  const modalTags = document.getElementById('modalTags');
+  const modalDemoBtn = document.getElementById('modalDemoBtn');
+  const modalGithubBtn = document.getElementById('modalGithubBtn');
+
+  function openModal(card) {
+    const title = card.getAttribute('data-title');
+    const category = card.getAttribute('data-category');
+    const description = card.getAttribute('data-description');
+    const image = card.getAttribute('data-image');
+    const demo = card.getAttribute('data-demo');
+    const github = card.getAttribute('data-github');
+    const tags = card.getAttribute('data-tags').split(',');
+
+    // Isi data ke dalam modal
+    modalImage.src = image;
+    modalImage.alt = title;
+    modalCategory.textContent = category;
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    modalDemoBtn.href = demo;
+    modalGithubBtn.href = github;
+
+    // Render tag-tag teknologi
+    modalTags.innerHTML = '';
+    tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'tech-tag';
+      span.textContent = tag.trim();
+      modalTags.appendChild(span);
     });
 
-    const hoverableElements = document.querySelectorAll('a, button, .glass-card, .tab-btn, .toggle-option');
-    hoverableElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    // Sembunyikan tombol jika link adalah '#'
+    modalDemoBtn.style.display = (demo === '#' || !demo) ? 'none' : 'inline-flex';
+    modalGithubBtn.style.display = (github === '#' || !github) ? 'none' : 'inline-flex';
+
+    // Buka modal
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Re-render Lucide icons di dalam modal
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Klik pada kartu proyek → buka modal
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  // Tombol tutup modal
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  // Klik di luar modal → tutup modal
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
     });
   }
 
-  // 2. Mobile Navbar Toggle
+  // Tekan Escape → tutup modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+
+  // 1. Mobile Navbar Toggle
   const mobileToggle = document.getElementById('mobileMenuToggle');
   const navLinks = document.getElementById('navLinks');
   if (mobileToggle && navLinks) {
@@ -23,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. ScrollSpy & Back to Top
+  // 2. ScrollSpy & Back to Top
   const sections = document.querySelectorAll('section[id]');
   const navLinksList = document.querySelectorAll('.nav-link');
   const backToTopBtn = document.getElementById('backToTop');
@@ -34,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active link highlighting
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 150;
+      const sectionTop = current.offsetTop - 160;
       const sectionId = current.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -63,7 +126,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Skills Tab Switcher & Progress Animation
+  // 3. 3D Tilt Effect for Glass Cards
+  const glassCards = document.querySelectorAll('.glass-card');
+  if (window.innerWidth > 768) {
+    glassCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+  }
+
+  // 4. Skills Tab Switcher & Progress Bar Animation
   const tabBtns = document.querySelectorAll('.tab-btn');
   const skillGrids = document.querySelectorAll('.skills-grid');
 
@@ -91,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
       skillGrids.forEach(grid => {
         grid.style.display = 'none';
         grid.classList.remove('active');
-        // Reset bar widths
         grid.querySelectorAll('.skill-bar-fill').forEach(bar => bar.style.width = '0%');
       });
 
@@ -239,4 +323,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseup', stopDrag);
     document.addEventListener('touchend', stopDrag);
   });
+
+  // Auto-hide floating badges when scrolling past Hero section (#profil)
+  const heroSection = document.getElementById('profil');
+  if (heroSection && floatingBadges.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        floatingBadges.forEach(badge => {
+          if (!entry.isIntersecting) {
+            badge.classList.add('out-of-view');
+          } else {
+            badge.classList.remove('out-of-view');
+          }
+        });
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(heroSection);
+  }
 });
