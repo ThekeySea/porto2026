@@ -184,4 +184,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 7. Interactive Draggable Floating Badges
+  const floatingBadges = document.querySelectorAll('.floating-badge');
+  floatingBadges.forEach(badge => {
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      badge.classList.add('dragging');
+      badge.style.animation = 'none'; // Pause floating keyframe during drag
+      badge.style.zIndex = '100';
+
+      const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
+      const rect = badge.getBoundingClientRect();
+      offsetX = clientX - rect.left;
+      offsetY = clientY - rect.top;
+
+      badge.style.position = 'fixed';
+      badge.style.left = `${rect.left}px`;
+      badge.style.top = `${rect.top}px`;
+      badge.style.right = 'auto';
+      badge.style.bottom = 'auto';
+    };
+
+    const onDrag = (e) => {
+      if (!isDragging) return;
+      if (e.cancelable) e.preventDefault();
+
+      const clientX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type.startsWith('touch') ? e.touches[0].clientY : e.clientY;
+
+      badge.style.left = `${clientX - offsetX}px`;
+      badge.style.top = `${clientY - offsetY}px`;
+    };
+
+    const stopDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+        badge.classList.remove('dragging');
+      }
+    };
+
+    badge.addEventListener('mousedown', startDrag);
+    badge.addEventListener('touchstart', startDrag, { passive: false });
+
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('touchmove', onDrag, { passive: false });
+
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+  });
 });

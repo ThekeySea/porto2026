@@ -18,7 +18,7 @@
                     </div>
                     <div>
                         <div class="info-label">Email Saya</div>
-                        <div class="info-value">{{ $profile['email'] }}</div>
+                        <div class="info-value">alazhiimpw02@gmail.com</div>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                     </div>
                     <div>
                         <div class="info-label">WhatsApp / Telepon</div>
-                        <div class="info-value">{{ $profile['phone'] }}</div>
+                        <div class="info-value">+62-888-0589-4545</div>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <div class="info-label">Lokasi</div>
-                        <div class="info-value">{{ $profile['location'] }} (Remote / On-site)</div>
+                        <div class="info-value">Surabaya, East Java</div>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <div class="info-label">Status Ketersediaan</div>
-                        <div class="info-value" style="color: var(--accent-blue-light);">{{ $profile['status'] }}</div>
+                        <div class="info-value" style="color: var(--accent-blue-light);">Siap Magang</div>
                     </div>
                 </div>
             </div>
